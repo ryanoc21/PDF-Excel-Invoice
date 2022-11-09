@@ -17,14 +17,15 @@ class File:
             # Get the filename to add its info to the PDF
             filename = Path(filepath).stem
             invoice_num = filename.split('-')[0]
+            date = filename.split('-')[1]
 
             # Create the PDF
             pdf = FPDF(orientation="P", unit="mm", format="A4")
             pdf.add_page()
             pdf.set_font(family='Times', size=16, style='B')
-            pdf.cell(w=50, h=8, txt=f'Invoice No. {invoice_num}')
+            pdf.cell(w=50, h=8, txt=f'Invoice No. {invoice_num}',ln=1)
+            pdf.cell(w=50,h=8,txt=f'Date: {date}',ln=1)
             pdf.output(f"PDF_Reports/{filename}.pdf")
 
 
-file = File("invoices/*.xlsx")
-file.process()
+
