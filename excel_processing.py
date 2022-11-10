@@ -19,6 +19,9 @@ class File:
             # Create the PDF
             pdf = FPDF(orientation="P", unit="mm", format="A4")
             pdf.add_page()
+
+            # Add the date and invoice number
+            pdf.image('icon.png', w=10)
             pdf.set_font(family='Times', size=16, style='B')
             pdf.cell(w=50, h=8, txt=f'Invoice No. {invoice_num}',ln=1)
             pdf.cell(w=50,h=8,txt=f'Date: {date}',ln=1)
@@ -53,9 +56,10 @@ class File:
 
             # Add a summary of the data
             pdf.set_font(family='Times',size=14,style='B')
-            pdf.cell(w=0,h=8,txt=f'The total price is {total_price} euros',ln=1)
-            pdf.image('invoice.png',5,5)
+            pdf.cell(w=30, h=8, txt=" ", ln=1)
+            pdf.cell(w=60,h=8,txt=f'The total price is {total_price} euros')
 
+            # Output the pdf
             pdf.output(f"PDF_Reports/{filename}.pdf")
 
 

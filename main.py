@@ -1,4 +1,6 @@
 from excel_processing import File
 
 file = File("invoices/*.xlsx")
-file.process()
+
+if __name__ == '__main__':
+    file.process()
